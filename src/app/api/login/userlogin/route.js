@@ -11,6 +11,9 @@ export async function GET() {
   if (!token) {
     return new Response(JSON.stringify({ success: false, message: 'No token provided' }), { status: 401 });
   }
+  console.log('JWT_SECRET:', JWT_SECRET);
+  console.log('Token:', token);
+
 
   try {
     const decoded = jwt.verify(token, JWT_SECRET);
