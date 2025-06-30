@@ -17,8 +17,8 @@ export async function POST(req) {
     `, [email]);
     if (pegawaiResults.length > 0) {
       const user = pegawaiResults[0];
-      // const isPasswordValid = password === user.password_pegawai
-      const isPasswordValid = await bcrypt.compare(password, user.password_pegawai); //kalau udah password di bycrypt pakai ini
+      const isPasswordValid = password === user.password_pegawai
+      // const isPasswordValid = await bcrypt.compare(password, user.password_pegawai); //kalau udah password di bycrypt pakai ini
       if (isPasswordValid) {
         const token = jwt.sign({ id: user.id_pegawai, role: 'pegawai', jabatan: user.nama_role }, JWT_SECRET, { expiresIn: '1h' });
 
