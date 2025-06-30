@@ -10,7 +10,7 @@ export async function POST(req) {
 
   try {
     // Cek Penitip
-    const [penitipResults] = await pool.query('SELECT * FROM Penitip WHERE email_penitip = ?', [email]);
+    const [penitipResults] = await pool.query('SELECT * FROM penitip WHERE email_penitip = ?', [email]);
     if (penitipResults.length > 0) {
       const user = penitipResults[0];
       const isPasswordValid = password === user.password_penitip;
@@ -43,7 +43,7 @@ export async function POST(req) {
     }
 
     // Cek Pembeli
-    const [pembeliResults] = await pool.query('SELECT * FROM Pembeli WHERE email_pembeli = ?', [email]);
+    const [pembeliResults] = await pool.query('SELECT * FROM pembeli WHERE email_pembeli = ?', [email]);
     if (pembeliResults.length > 0) {
       const user = pembeliResults[0];
       const isPasswordValid = password === user.password_pembeli;
@@ -76,7 +76,7 @@ export async function POST(req) {
     }
 
     // Cek Organisasi
-    const [organisasiResults] = await pool.query('SELECT * FROM Organisasi WHERE email_organisasi = ?', [email]);
+    const [organisasiResults] = await pool.query('SELECT * FROM organisasi WHERE email_organisasi = ?', [email]);
     if (organisasiResults.length > 0) {
       const user = organisasiResults[0];
       const isPasswordValid = password === user.password_organisasi;

@@ -11,7 +11,7 @@ export async function POST(req) {
   try {
     // Cek Pegawai
     const [pegawaiResults] = await pool.query(`
-      SELECT p.*, r.nama_role FROM Pegawai p
+      SELECT p.*, r.nama_role FROM pegawai p
       LEFT JOIN role r ON p.id_role = r.id_role
       WHERE p.email_pegawai = ?
     `, [email]);

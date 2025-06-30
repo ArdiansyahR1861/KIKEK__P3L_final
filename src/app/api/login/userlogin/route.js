@@ -29,7 +29,7 @@ export async function GET() {
           poin_penitip, 
           saldo_penitip, 
           rating_penitip
-        FROM Penitip 
+        FROM penitip 
         WHERE id_penitip = ?
       `, [decoded.id]);
 
@@ -55,7 +55,7 @@ export async function GET() {
     } else if (decoded.role === 'pembeli') {
       const [result] = await pool.query(`
         SELECT id_pembeli, nama_pembeli, email_pembeli, no_telp_pembeli, poin_pembeli
-        FROM Pembeli 
+        FROM pembeli 
         WHERE id_pembeli = ?
       `, [decoded.id]);
 
@@ -81,7 +81,7 @@ export async function GET() {
           p.email_pegawai,
           p.alamat_pegawai,
           r.nama_role
-        FROM Pegawai p
+        FROM pegawai p
         LEFT JOIN role r ON p.id_role = r.id_role
         WHERE p.id_pegawai = ?
       `, [decoded.id]);
@@ -109,7 +109,7 @@ export async function GET() {
           no_telp_organisasi, 
           alamat_organisasi,
           foto_organisasi
-        FROM Organisasi 
+        FROM organisasi 
         WHERE id_organisasi = ?
       `, [decoded.id]);
 
